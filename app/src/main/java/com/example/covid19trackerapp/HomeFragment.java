@@ -1,6 +1,7 @@
 package com.example.covid19trackerapp;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
 import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
@@ -35,6 +39,8 @@ public class HomeFragment extends Fragment {
         parentHolder = inflater.inflate(R.layout.home_fragment,container,false);
 
         TextView confirmedCaseTv,activeCaseTv,recoveredTv,deathsTv,tableConfirmedCaseTv,tableDeathsTv,tableRecoveredTv,tableCasesPerMillionTv,tableDeathsPerMillionTv;
+
+        PieChart pieChart = parentHolder.findViewById(R.id.pieChart);
 
         confirmedCaseTv=parentHolder.findViewById(R.id.confirmedCaseTv);
         activeCaseTv=parentHolder.findViewById(R.id.activeCaseTv);
@@ -74,6 +80,13 @@ public class HomeFragment extends Fragment {
                     tableRecoveredTv.setText(String.valueOf(post.getRecovered()));
                     tableCasesPerMillionTv.setText(String.valueOf(post.getCasesPerOneMillion()));
                     tableDeathsPerMillionTv.setText(String.valueOf(post.getDeathsPerOneMillion()));
+
+                    pieChart.addPieSlice(new PieModel("Cases",post.getCases(), Color.parseColor("#fed70e")));
+                    pieChart.addPieSlice(new PieModel("Recovered",post.getRecovered(),Color.parseColor("#399f4c")));
+                    pieChart.addPieSlice(new PieModel("Deaths",post.getDeaths(),Color.parseColor("#ea5568")));
+                    pieChart.addPieSlice(new PieModel("Active Cases",post.getActive(),Color.parseColor("#097cf3")));
+                    pieChart.startAnimation();
+
                 }
             }
 

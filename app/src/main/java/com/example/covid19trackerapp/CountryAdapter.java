@@ -29,6 +29,7 @@ public class CountryAdapter extends ArrayAdapter<CountryPost> {
         this.countryPostList=countryPostList;
 
     }
+    
 
     @NonNull
     @Override
@@ -42,7 +43,6 @@ public class CountryAdapter extends ArrayAdapter<CountryPost> {
 
         countryNameText.setText(countryPostList.get(position).getCountry());
         Glide.with(context).load(countryPostList.get(position).getCountryInfo().getFlag()).into(countryFlagImage);
-
 
 
         return view;

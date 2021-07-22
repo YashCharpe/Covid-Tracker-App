@@ -1,6 +1,7 @@
 package com.example.covid19trackerapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -116,6 +117,13 @@ public class SearchFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getContext(),adapter.getItem(position).getCountry(),Toast.LENGTH_SHORT).show();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("countryName",adapter.getItem(position).getCountry());
+                Intent intent = new Intent(getContext(),CountryWisePage.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
             }
         });
 

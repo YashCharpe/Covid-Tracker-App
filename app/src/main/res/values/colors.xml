@@ -20,5 +20,7 @@
     <color name="greydark">#6c757c</color>
     <color name="whitebkg">#f9fafc</color>
     <color name="off_black">#242a38</color>
+    <color name="yellow">#fed70e</color>
+    <color name="skin_color">#cda67f</color>
 
 </resources>
