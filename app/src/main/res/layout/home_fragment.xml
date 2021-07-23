@@ -50,65 +50,115 @@
                 android:id="@+id/linearLayout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:layout_marginTop="120dp"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
+                    android:layout_width="160dp"
                     android:layout_height="150dp"
                     android:layout_marginRight="20dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Confirmed Cases"
-                        android:textColor="@color/grey"
-                        android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/confirmedCaseTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="25dp"
-                        android:text="753"
-                        android:textColor="@color/dark_pink"
-                        android:textSize="34sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Confirmed Cases"
+                            android:textColor="@color/grey"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/confirmedCaseTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="25dp"
+                            android:text="753"
+                            android:textColor="@color/dark_pink"
+                            android:textSize="34sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:layout_below="@id/confirmedCaseTv"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp">
+
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/lineChart"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                />
+
+                        </RelativeLayout>
+
+
+
+                    </RelativeLayout>
+
+
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
+                    android:layout_width="160dp"
                     android:layout_height="150dp"
-                    android:layout_marginLeft="20dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Active Cases"
-                        android:textColor="@color/grey"
-                        android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/activeCaseTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="25dp"
-                        android:text="626"
-                        android:textColor="@color/blue"
-                        android:textSize="34sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Active Cases"
+                            android:textColor="@color/grey"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/activeCaseTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="25dp"
+                            android:text="626"
+                            android:textColor="@color/blue"
+                            android:textSize="34sp"
+                            android:textStyle="bold"
+                            android:maxLines="1"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:layout_below="@id/activeCaseTv"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp">
+
+                            <!--
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/lineChart2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                />
+                            -->
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -129,25 +179,48 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Recovered"
-                        android:textColor="@color/grey"
-                        android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/recoveredTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="25dp"
-                        android:text="67"
-                        android:textColor="@color/green"
-                        android:textSize="34sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Recovered"
+                            android:textColor="@color/grey"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recoveredTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="25dp"
+                            android:text="67"
+                            android:textColor="@color/green"
+                            android:textSize="34sp"
+                            android:textStyle="bold" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:layout_below="@id/recoveredTv"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp">
+
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/lineChart3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
 
                 </androidx.cardview.widget.CardView>
 
@@ -158,25 +231,49 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Deaths"
-                        android:textColor="@color/grey"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/deathsTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="25dp"
-                        android:text="36"
-                        android:textColor="@color/greydark"
-                        android:textSize="34sp"
-                        android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Deaths"
+                            android:textColor="@color/grey"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/deathsTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="25dp"
+                            android:text="36"
+                            android:textColor="@color/greydark"
+                            android:textSize="34sp"
+                            android:textStyle="bold" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:layout_below="@id/deathsTv"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp">
+
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/lineChart4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 

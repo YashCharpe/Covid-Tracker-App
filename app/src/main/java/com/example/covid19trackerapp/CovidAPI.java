@@ -13,5 +13,8 @@ public interface CovidAPI {
     @GET("countries")
     Call<List<CountryPost>> getCountryDetails();
 
+    @GET("all?lastdays=all")
+    Call<DateWiseStats> getDateWiseDetails();
+
 
 }
