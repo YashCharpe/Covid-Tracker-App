@@ -107,21 +107,5 @@ public class CountryWisePage extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
