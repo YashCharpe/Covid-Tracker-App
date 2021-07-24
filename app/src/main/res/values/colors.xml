@@ -10,6 +10,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="red">#FF0000</color>
     <color name="dark_blue">#212b46</color>
     <color name="pink">#ea5568</color>
     <color name="off_white">#c2cde1</color>

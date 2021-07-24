@@ -11,7 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
+import org.eazegraph.lib.charts.BarChart;
 import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.BarModel;
 import org.eazegraph.lib.models.PieModel;
 
 import retrofit2.Call;
@@ -25,7 +27,6 @@ public class CountryWisePage extends AppCompatActivity {
     private TextView textView,confirmedCaseTv,criticalTv,recoveredTv,deceasedTv;
     private ImageView flagImageView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,10 @@ public class CountryWisePage extends AppCompatActivity {
         Toolbar mytoolbar =findViewById(R.id.mytoolbar);
         setSupportActionBar(mytoolbar);
 
+
+
         PieChart pieChart;
+        BarChart barchart =findViewById(R.id.barchart);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -47,6 +51,7 @@ public class CountryWisePage extends AppCompatActivity {
         recoveredTv = findViewById(R.id.recoveredTv);
         deceasedTv = findViewById(R.id.deceasedTv);
         pieChart = findViewById(R.id.pieChart);
+
 
         textView.setText(countryName);
 
@@ -83,6 +88,13 @@ public class CountryWisePage extends AppCompatActivity {
                     pieChart.addPieSlice(new PieModel("Deaths",countryPost.getDeaths(),Color.parseColor("#ea5568")));
                     pieChart.addPieSlice(new PieModel("Active Cases",countryPost.getActive(),Color.parseColor("#097cf3")));
                     pieChart.startAnimation();
+
+                    barchart.addBar(new BarModel("Cases Per Mil",countryPost.getCasesPerOneMillion().floatValue(),0xFFea5568));
+                    barchart.addBar(new BarModel("Deaths Per Mil",countryPost.getDeathsPerOneMillion().floatValue(),0xFFFF0000));
+                    barchart.addBar(new BarModel("Recovered Per Mil",countryPost.getRecoveredPerOneMillion().floatValue(),0xFF399f4c));
+                    barchart.addBar(new BarModel("Tests Per Mil",countryPost.getTestsPerOneMillion().floatValue(),0xFF097cf3));
+
+                    barchart.startAnimation();
 
 
                 }
