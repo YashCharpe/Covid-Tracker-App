@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface CovidAPI {
 
@@ -15,6 +16,9 @@ public interface CovidAPI {
 
     @GET("all?lastdays=all")
     Call<DateWiseStats> getDateWiseDetails();
+
+    @GET("{countryName}")
+    Call<CountryPost> getCountryWiseDetails(@Path("countryName") String countryName);
 
 
 }
