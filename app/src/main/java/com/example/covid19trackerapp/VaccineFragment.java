@@ -26,10 +26,6 @@ public class VaccineFragment extends Fragment {
 
         parentHolder = inflater.inflate(R.layout.vaccine_fragment,container,false);
 
-
-
         return parentHolder;
     }
-
-
 }
