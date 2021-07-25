@@ -93,6 +93,9 @@ public class AllStatsPage extends AppCompatActivity {
                 case R.id.nav_health:
                     selectedFragment = new HealthFragment();
                     break;
+                case R.id.nav_vaccine:
+                    selectedFragment = new VaccineFragment();
+                    break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
             return true;
