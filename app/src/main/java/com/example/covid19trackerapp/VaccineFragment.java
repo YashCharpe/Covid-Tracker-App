@@ -1,10 +1,12 @@
 package com.example.covid19trackerapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,15 @@ public class VaccineFragment extends Fragment {
         referenceActivity=getActivity();
 
         parentHolder = inflater.inflate(R.layout.vaccine_fragment,container,false);
+
+        Button slotBtn = parentHolder.findViewById(R.id.slotBtn);
+
+        slotBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),VaccineSearch.class));
+            }
+        });
 
         return parentHolder;
     }

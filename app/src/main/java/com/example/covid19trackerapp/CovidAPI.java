@@ -20,5 +20,8 @@ public interface CovidAPI {
     @GET("{countryName}")
     Call<CountryPost> getCountryWiseDetails(@Path("countryName") String countryName);
 
+    @GET("v2/admin/location/states")
+    Call<StateMainModel> getAllIndiaStates();
+
 
 }

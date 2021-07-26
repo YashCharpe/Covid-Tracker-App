@@ -82,7 +82,6 @@ public class CountryWisePage extends AppCompatActivity {
                     deceasedTv.setText(countryPost.getTodayDeaths().toString());
 
 
-
                     pieChart.addPieSlice(new PieModel("Cases",countryPost.getCases(), Color.parseColor("#fed70e")));
                     pieChart.addPieSlice(new PieModel("Recovered",countryPost.getRecovered(),Color.parseColor("#399f4c")));
                     pieChart.addPieSlice(new PieModel("Deaths",countryPost.getDeaths(),Color.parseColor("#ea5568")));

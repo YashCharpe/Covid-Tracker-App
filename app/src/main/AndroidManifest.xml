@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Covid19TrackerApp">
-        <activity android:name=".CountryWisePage"></activity>
+        <activity android:name=".VaccineSearch"></activity>
+        <activity android:name=".CountryWisePage" />
         <activity android:name=".AllStatsPage" />
         <activity android:name=".MainActivity">
             <intent-filter>
