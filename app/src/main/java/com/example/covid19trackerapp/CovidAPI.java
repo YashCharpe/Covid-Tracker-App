@@ -23,5 +23,8 @@ public interface CovidAPI {
     @GET("v2/admin/location/states")
     Call<StateMainModel> getAllIndiaStates();
 
+    @GET("v2/admin/location/districts/{districtId}")
+    Call<DistrictMainModel> getStateWiseDistricts(@Path("districtId") Integer districtId);
+
 
 }

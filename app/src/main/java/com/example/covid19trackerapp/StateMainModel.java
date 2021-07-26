@@ -1,25 +1,25 @@
 package com.example.covid19trackerapp;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StateMainModel {
 
-    private ArrayList<StateIdNameModel> states;
+    private List<StateIdNameModel> states;
     private Integer ttl;
 
     public StateMainModel() {
     }
 
-    public StateMainModel(ArrayList<StateIdNameModel> states,Integer ttl) {
+    public StateMainModel(List<StateIdNameModel> states,Integer ttl) {
         this.states = states;
         this.ttl = ttl;
     }
 
-    public ArrayList<StateIdNameModel> getStates() {
+    public List<StateIdNameModel> getStates() {
         return states;
     }
 
-    public void setStates(ArrayList<StateIdNameModel> states) {
+    public void setStates(List<StateIdNameModel> states) {
         this.states = states;
     }
 
