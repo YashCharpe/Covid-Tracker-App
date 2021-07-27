@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_marginBottom="4dp"
+    android:elevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/hospitalIconIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_hospital"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/hospitalNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dental Hospital Amravati"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/hospitalIconIv"
+            app:layout_constraintTop_toTopOf="@id/hospitalIconIv"
+            app:layout_constraintBottom_toBottomOf="@id/hospitalIconIv"
+            android:layout_marginLeft="6dp"
+            android:gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/locationIconIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location"
+            app:layout_constraintTop_toBottomOf="@id/hospitalIconIv"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/locationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Near D-Mart, Mardi Road, Amravati"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/locationIconIv"
+            app:layout_constraintTop_toTopOf="@id/locationIconIv"
+            app:layout_constraintBottom_toBottomOf="@id/locationIconIv"
+            android:layout_marginLeft="6dp"
+            android:gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/clockIconIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/locationIconIv"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_clock"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/timingTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From : 09.00.00 To 17.00.00"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/clockIconIv"
+            app:layout_constraintTop_toTopOf="@id/clockIconIv"
+            app:layout_constraintBottom_toBottomOf="@id/clockIconIv"
+            android:layout_marginLeft="6dp"
+            android:gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/vaccineIconIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@id/clockIconIv"
+            app:layout_constraintStart_toStartOf="@id/clockIconIv"
+            android:src="@drawable/ic_vaccine"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/vaccineTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Covishield"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/vaccineIconIv"
+            app:layout_constraintTop_toTopOf="@id/vaccineIconIv"
+            app:layout_constraintBottom_toBottomOf="@id/vaccineIconIv"
+            android:layout_marginLeft="6dp"
+            android:gravity="center_vertical"/>
+
+
+        <TextView
+            android:id="@+id/feeTypeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Free"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/vaccineTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timingTv"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:id="@+id/ageLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age Limit :"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/vaccineTv"
+            app:layout_constraintStart_toStartOf="@id/vaccineTv"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/ageLimitTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/ageLimit"
+            app:layout_constraintTop_toTopOf="@id/ageLimit"
+            app:layout_constraintBottom_toBottomOf="@id/ageLimit"/>
+
+        <TextView
+            android:id="@+id/availability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Availability:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/ageLimitTv"
+            app:layout_constraintTop_toTopOf="@id/ageLimitTv"
+            app:layout_constraintBottom_toBottomOf="@id/ageLimitTv"
+            android:layout_marginLeft="50dp"/>
+
+        <TextView
+            android:id="@+id/availabilityTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/availability"
+            app:layout_constraintBottom_toBottomOf="@id/availability"
+            app:layout_constraintTop_toTopOf="@id/availability"/>
+
+
+        <!--<ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line 1"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line 2"
+            android:textSize="16sp"
+            android:layout_below="@id/textView1"
+            android:layout_toRightOf="@id/imageView"
+            android:layout_marginLeft="4dp"/>
+            -->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    
+    
+</androidx.cardview.widget.CardView>

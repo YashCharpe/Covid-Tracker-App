@@ -1,17 +1,24 @@
 package com.example.covid19trackerapp;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -22,12 +29,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class VaccineSearch extends AppCompatActivity {
+public class VaccineSearch extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private AutoCompleteTextView stateAutoCompleteTextView,districtAutoCompleteTextView;
     private ArrayList<String> stateList,districtList;
-    private TextView tv;
+    private TextView tv,dateTv;
     private StateMainModel stateMainModel;
+    private Button checkSlotBtn,selectDateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,9 @@ public class VaccineSearch extends AppCompatActivity {
         stateAutoCompleteTextView = findViewById(R.id.stateAutoCompleteTextView);
         districtAutoCompleteTextView = findViewById(R.id.districtAutoCompleteTextView);
         tv = findViewById(R.id.tv);
+        checkSlotBtn = findViewById(R.id.checkSlotBtn);
+        selectDateBtn = findViewById(R.id.selectDateBtn);
+        dateTv = findViewById(R.id.dateTv);
 
         stateList = new ArrayList<>();
         districtList = new ArrayList<>();
@@ -136,8 +147,6 @@ public class VaccineSearch extends AppCompatActivity {
                                 districtList.add(districtMainModel.getDistricts().get(i).getDistrict_name());
                             }
 
-
-
                             districtAutoCompleteTextView.setAdapter(districtAdapter);
 
                         }
@@ -153,7 +162,24 @@ public class VaccineSearch extends AppCompatActivity {
             }
         });
 
+        selectDateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datepicker = new DatePickerFragment();
+                datepicker.show(getSupportFragmentManager(),"date picker");
 
+            }
+        });
+
+        checkSlotBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),VaccineSlotsPage.class));
+
+
+            }
+        });
 
         /*stateList = new ArrayList<>();
         districtList = new ArrayList<>();
@@ -193,5 +219,17 @@ public class VaccineSearch extends AppCompatActivity {
 
          */
 
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR,year);
+        c.set(Calendar.MONTH,month);
+        c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        Toast.makeText(getApplicationContext(),currentDateString,Toast.LENGTH_SHORT).show();
+        dateTv.setText(dayOfMonth+"-"+(month+1)+"-"+year);
     }
 }
