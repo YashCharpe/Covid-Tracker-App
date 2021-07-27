@@ -26,7 +26,7 @@ public class VaccineSlotsPage extends AppCompatActivity {
 
         for(int i=0;i<4;i++)
         {
-            slotList.add(new SlotItem(R.drawable.ic_android,"Line 1","Line2"));
+            slotList.add(new SlotItem(R.drawable.ic_hospital,R.drawable.ic_location,R.drawable.ic_clock,R.drawable.ic_vaccine_bottle,"Dental Hospital Amravati","Near D-Mart, Mardi Road, Amravati","From : 09.00.00 To 17.00.00","Covishield","Free","Age Limit :","45","Availability:","100"));
         }
 
         mRecyclerView = findViewById(R.id.recyclerView);

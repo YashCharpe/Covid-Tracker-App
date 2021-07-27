@@ -19,16 +19,28 @@ public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.StaticViewHold
 
     public static class StaticViewHolder extends RecyclerView.ViewHolder
     {
-        public ImageView mImageView;
-        public TextView mTextView1;
-        public TextView mTextView2;
+        public ImageView hospitalIconIv,locationIconIv,clockIconIv,vaccineIconIv;
+        public TextView hospitalNameTv,locationTv,timingTv,vaccineTv,feeTypeTv,ageLimit,ageLimitTv,availability,availabilityTv;
+
+
 
         public StaticViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
-            mImageView = itemView.findViewById(R.id.imageView);
-            mTextView1 = itemView.findViewById(R.id.textView1);
-            mTextView2 = itemView.findViewById(R.id.textView2);
+            hospitalIconIv =itemView.findViewById(R.id.hospitalIconIv);
+            locationIconIv = itemView.findViewById(R.id.locationIconIv);
+            clockIconIv = itemView.findViewById(R.id.clockIconIv);
+            vaccineIconIv = itemView.findViewById(R.id.vaccineIconIv);
+            hospitalNameTv = itemView.findViewById(R.id.hospitalNameTv);
+            locationTv = itemView.findViewById(R.id.locationTv);
+            timingTv = itemView.findViewById(R.id.timingTv);
+            vaccineTv = itemView.findViewById(R.id.vaccineTv);
+            feeTypeTv = itemView.findViewById(R.id.feeTypeTv);
+            ageLimit = itemView.findViewById(R.id.ageLimit);
+            ageLimitTv = itemView.findViewById(R.id.ageLimitTv);
+            availability = itemView.findViewById(R.id.availability);
+            availabilityTv = itemView.findViewById(R.id.availabilityTv);
+
         }
     }
 
@@ -49,9 +61,21 @@ public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.StaticViewHold
     public void onBindViewHolder(@NonNull @NotNull SlotAdapter.StaticViewHolder holder, int position) {
         SlotItem currentItem = mSlotList.get(position);
 
-        holder.mImageView.setImageResource(currentItem.getmImageResource());
-        holder.mTextView1.setText(currentItem.getmText1());
-        holder.mTextView2.setText(currentItem.getmText2());
+
+        holder.hospitalIconIv.setImageResource(currentItem.getHospitalIconIv());
+        holder.locationIconIv.setImageResource(currentItem.getLocationIconIv());
+        holder.clockIconIv.setImageResource(currentItem.getClockIconIv());
+        holder.vaccineIconIv.setImageResource(currentItem.getVaccineIconIv());
+
+        holder.hospitalNameTv.setText(currentItem.getHospitalNameTv());
+        holder.locationTv.setText(currentItem.getLocationTv());
+        holder.timingTv.setText(currentItem.getTimingTv());
+        holder.vaccineTv.setText(currentItem.getVaccineTv());
+        holder.feeTypeTv.setText(currentItem.getFeeTypeTv());
+        holder.ageLimit.setText(currentItem.getAgeLimit());
+        holder.ageLimitTv.setText(currentItem.getAgeLimitTv());
+        holder.availability.setText(currentItem.getAvailability());
+        holder.availabilityTv.setText(currentItem.getAvailabilityTv());
 
     }
 
