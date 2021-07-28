@@ -10,11 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -38,6 +41,8 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
     private StateMainModel stateMainModel;
     private DistrictMainModel districtMainModel;
     private Button checkSlotBtn;
+    private ProgressBar progBar;
+    private TextInputLayout pincodeTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,10 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
         tv = findViewById(R.id.tv);
         checkSlotBtn = findViewById(R.id.checkSlotBtn);
         cowinTv = findViewById(R.id.cowinTv);
+        progBar = findViewById(R.id.progBar);
+        pincodeTv = findViewById(R.id.pincodeTv);
+
+        progBar.setVisibility(View.VISIBLE);
 
         stateList = new ArrayList<>();
         districtList = new ArrayList<>();
@@ -98,7 +107,7 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
                     {
                         stateList.add(stateMainModel.getStates().get(i).getState_name());
                     }
-
+                    progBar.setVisibility(View.INVISIBLE);
                     stateAutoCompleteTextView.setAdapter(stateAdapter);
                 }
 
@@ -163,31 +172,28 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
             @Override
             public void onClick(View v) {
 
-                DialogFragment datepicker = new DatePickerFragment();
-                datepicker.show(getSupportFragmentManager(),"date picker");
-
-                /*if(!dateTv.getText().toString().equals(""))
+                if(stateAutoCompleteTextView.getText().toString().equals("Select State")&&pincodeTv.getEditText().getText().toString().isEmpty())
                 {
-                    Bundle bundle = new Bundle();
+                    Toast.makeText(getApplicationContext(),"Please Select Your State!",Toast.LENGTH_SHORT).show();
+                    stateAutoCompleteTextView.setFocusable(true);
+                    stateAutoCompleteTextView.requestFocus(1);
+                }
+                else if (!stateAutoCompleteTextView.getText().toString().equals("Select State")&&districtAutoCompleteTextView.getText().toString().equals("Select District"))
+                {
+                    Toast.makeText(getApplicationContext(),"Please Select Your District!",Toast.LENGTH_SHORT).show();
+                    districtAutoCompleteTextView.setFocusable(true);
+                }
+                else if(!stateAutoCompleteTextView.getText().toString().equals("Select State")&&!districtAutoCompleteTextView.getText().toString().equals("Select District"))
+                {
+                    DialogFragment datepicker = new DatePickerFragment();
+                    datepicker.show(getSupportFragmentManager(),"date picker");
+                }
+                else if(!pincodeTv.getEditText().getText().toString().isEmpty())
+                {
+                    DialogFragment datepicker = new DatePickerFragment();
+                    datepicker.show(getSupportFragmentManager(),"date picker");
+                }
 
-                    String selectedDistrict = districtAutoCompleteTextView.getText().toString();
-                    int selectedDistrictId = 0;
-                    //bundle.putString("district_id",districtAutoCompleteTextView.getText().toString());
-                    bundle.putString("date",dateTv.getText().toString());
-
-                    for(int i=0;i<districtMainModel.getDistricts().size();i++)
-                    {
-                        if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
-                        {
-                            selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
-                        }
-                    }
-                    bundle.putString("district_id", String.valueOf(selectedDistrictId));
-
-                    Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                }*/
 
             }
         });
@@ -202,44 +208,6 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
                 startActivity(intent);
             }
         });
-
-        /*stateList = new ArrayList<>();
-        districtList = new ArrayList<>();
-
-        stateList.add("Maharashtra");
-        stateList.add("Madhya Pradesh");
-        stateList.add("Goa");
-        stateList.add("Rajasthan");
-
-        ArrayAdapter<String> stateAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,stateList);
-
-        stateAutoCompleteTextView.setAdapter(stateAdapter);
-
-        stateAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(stateList.get(position).toString().equals("Maharashtra"))
-                {
-                    districtList.clear();
-                    districtList.add("Amravati");
-                    districtList.add("Pune");
-                    districtList.add("Mumbai");
-                }
-                else if(stateList.get(position).equals("Rajasthan"))
-                {
-                    districtList.clear();
-                    districtList.add("Jaipur");
-                    districtList.add("Jodhpur");
-                }
-            }
-        });
-
-        ArrayAdapter<String> districtAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,districtList);
-
-
-        districtAutoCompleteTextView.setAdapter(districtAdapter);
-
-         */
 
     }
 
