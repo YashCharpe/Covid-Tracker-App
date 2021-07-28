@@ -76,6 +76,15 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/recommandedTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/stateTextInputLayout"
+        app:layout_constraintStart_toStartOf="@id/stateTextInputLayout"
+        android:text="*Recommanded"
+        android:textColor="@color/dark_pink"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/stateTextInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -86,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:hint="State"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
@@ -132,31 +141,6 @@
         app:layout_constraintTop_toBottomOf="@id/districtInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/dateTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv"
-        app:layout_constraintStart_toStartOf="@id/tv"
-        app:layout_constraintEnd_toEndOf="@id/tv"
-        android:text="01-01-2021"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
-
-
-    <Button
-        android:id="@+id/selectDateBtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv"
-        app:layout_constraintStart_toStartOf="@id/tv"
-        app:layout_constraintEnd_toEndOf="@id/tv"
-        android:text="Select Date"
-        android:textSize="18sp"
-        android:background="@drawable/rounded_button"
-        android:layout_marginTop="40dp"/>
-
 
 
 

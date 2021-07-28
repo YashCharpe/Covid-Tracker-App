@@ -34,10 +34,10 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
 
     private AutoCompleteTextView stateAutoCompleteTextView,districtAutoCompleteTextView;
     private ArrayList<String> stateList,districtList;
-    private TextView tv,dateTv,cowinTv;
+    private TextView tv,cowinTv;
     private StateMainModel stateMainModel;
     private DistrictMainModel districtMainModel;
-    private Button checkSlotBtn,selectDateBtn;
+    private Button checkSlotBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,6 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
         districtAutoCompleteTextView = findViewById(R.id.districtAutoCompleteTextView);
         tv = findViewById(R.id.tv);
         checkSlotBtn = findViewById(R.id.checkSlotBtn);
-        selectDateBtn = findViewById(R.id.selectDateBtn);
-        dateTv = findViewById(R.id.dateTv);
         cowinTv = findViewById(R.id.cowinTv);
 
         stateList = new ArrayList<>();
@@ -160,38 +158,36 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
             }
         });
 
-        selectDateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogFragment datepicker = new DatePickerFragment();
-                datepicker.show(getSupportFragmentManager(),"date picker");
-
-            }
-        });
 
         checkSlotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Bundle bundle = new Bundle();
+                DialogFragment datepicker = new DatePickerFragment();
+                datepicker.show(getSupportFragmentManager(),"date picker");
 
-                String selectedDistrict = districtAutoCompleteTextView.getText().toString();
-                int selectedDistrictId = 0;
-                //bundle.putString("district_id",districtAutoCompleteTextView.getText().toString());
-                bundle.putString("date",dateTv.getText().toString());
-
-                for(int i=0;i<districtMainModel.getDistricts().size();i++)
+                /*if(!dateTv.getText().toString().equals(""))
                 {
-                    if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
-                    {
-                        selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
-                    }
-                }
-                bundle.putString("district_id", String.valueOf(selectedDistrictId));
+                    Bundle bundle = new Bundle();
 
-                Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                    String selectedDistrict = districtAutoCompleteTextView.getText().toString();
+                    int selectedDistrictId = 0;
+                    //bundle.putString("district_id",districtAutoCompleteTextView.getText().toString());
+                    bundle.putString("date",dateTv.getText().toString());
+
+                    for(int i=0;i<districtMainModel.getDistricts().size();i++)
+                    {
+                        if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
+                        {
+                            selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
+                        }
+                    }
+                    bundle.putString("district_id", String.valueOf(selectedDistrictId));
+
+                    Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }*/
 
             }
         });
@@ -256,6 +252,29 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
 
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         Toast.makeText(getApplicationContext(),currentDateString,Toast.LENGTH_SHORT).show();
-        dateTv.setText(dayOfMonth+"-"+(month+1)+"-"+year);
+
+        String selectedDate = dayOfMonth+"-"+(month+1)+"-"+year;
+
+        Bundle bundle = new Bundle();
+
+        String selectedDistrict = districtAutoCompleteTextView.getText().toString();
+        int selectedDistrictId = 0;
+        //bundle.putString("district_id",districtAutoCompleteTextView.getText().toString());
+        bundle.putString("date",selectedDate);
+
+        for(int i=0;i<districtMainModel.getDistricts().size();i++)
+        {
+            if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
+            {
+                selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
+            }
+        }
+        bundle.putString("district_id", String.valueOf(selectedDistrictId));
+
+        Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+
     }
 }
