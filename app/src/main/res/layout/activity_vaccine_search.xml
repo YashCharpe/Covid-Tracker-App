@@ -63,6 +63,7 @@
             android:text="Visit "/>
 
         <TextView
+            android:id="@+id/cowinTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cowin.gov.in"

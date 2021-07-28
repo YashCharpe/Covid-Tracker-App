@@ -2,6 +2,7 @@ package com.example.covid19trackerapp;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +34,7 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
 
     private AutoCompleteTextView stateAutoCompleteTextView,districtAutoCompleteTextView;
     private ArrayList<String> stateList,districtList;
-    private TextView tv,dateTv;
+    private TextView tv,dateTv,cowinTv;
     private StateMainModel stateMainModel;
     private DistrictMainModel districtMainModel;
     private Button checkSlotBtn,selectDateBtn;
@@ -49,6 +50,7 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
         checkSlotBtn = findViewById(R.id.checkSlotBtn);
         selectDateBtn = findViewById(R.id.selectDateBtn);
         dateTv = findViewById(R.id.dateTv);
+        cowinTv = findViewById(R.id.cowinTv);
 
         stateList = new ArrayList<>();
         districtList = new ArrayList<>();
@@ -191,6 +193,17 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
                 intent.putExtras(bundle);
                 startActivity(intent);
 
+            }
+        });
+
+        cowinTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.cowin.gov.in/"));
+                startActivity(intent);
             }
         });
 

@@ -2,6 +2,8 @@ package com.example.covid19trackerapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,7 @@ public class VaccineSlotsPage extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private VaccineSessionModel vaccineSessionModel;
+    private ProgressBar progBar;
 
 
     @Override
@@ -35,6 +38,9 @@ public class VaccineSlotsPage extends AppCompatActivity {
         String date = bundle.getString("date");
 
         mRecyclerView = findViewById(R.id.recyclerView);
+        progBar = findViewById(R.id.progBar);
+
+        progBar.setVisibility(View.VISIBLE);
 
         ArrayList<SlotItem> slotList = new ArrayList<SlotItem>();
 
@@ -67,11 +73,13 @@ public class VaccineSlotsPage extends AppCompatActivity {
             public void onResponse(Call<VaccineSessionModel> call, Response<VaccineSessionModel> response) {
                 if(!response.isSuccessful())
                 {
+                    progBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(),"Error!!Code: "+response.code()+response.toString(),Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else
                 {
+                    progBar.setVisibility(View.INVISIBLE);
                     vaccineSessionModel = response.body();
 
                     //Toast.makeText(getApplicationContext(),"Response: "+vaccineSessionModel.getSessions(),Toast.LENGTH_SHORT).show();
@@ -105,6 +113,7 @@ public class VaccineSlotsPage extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<VaccineSessionModel> call, Throwable t) {
+                progBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getApplicationContext(),"Error!! Response: "+t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });

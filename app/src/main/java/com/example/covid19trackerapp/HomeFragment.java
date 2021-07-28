@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -54,6 +54,8 @@ public class HomeFragment extends Fragment {
         LineChart lineChart3 = parentHolder.findViewById(R.id.lineChart3);
         LineChart lineChart4 = parentHolder.findViewById(R.id.lineChart4);
 
+        ProgressBar progBar = parentHolder.findViewById(R.id.progBar);
+
         confirmedCaseTv=parentHolder.findViewById(R.id.confirmedCaseTv);
         activeCaseTv=parentHolder.findViewById(R.id.activeCaseTv);
         recoveredTv=parentHolder.findViewById(R.id.recoveredTv);
@@ -63,6 +65,8 @@ public class HomeFragment extends Fragment {
         tableRecoveredTv=parentHolder.findViewById(R.id.tableRecoveredTv);
         tableCasesPerMillionTv=parentHolder.findViewById(R.id.tableCasesPerMillionTv);
         tableDeathsPerMillionTv=parentHolder.findViewById(R.id.tableDeathsPerMillionTv);
+
+        progBar.setVisibility(View.VISIBLE);
 
         List<Entry> entries = new ArrayList<Entry>();
 
@@ -77,11 +81,13 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<DateWiseStats> call, Response<DateWiseStats> response) {
                 if(!response.isSuccessful())
                 {
+                    progBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(getContext(),"Error!!Code: "+response.code(),Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else
                 {
+                    progBar.setVisibility(View.INVISIBLE);
                     DateWiseStats dateWiseStats = response.body();
                     int i=0;
                     entries.add(new Entry(dateWiseStats.getCasesModel().getDayOne(),i));
@@ -205,6 +211,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<DateWiseStats> call, Throwable t) {
+                progBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getContext(),"Failure!!Code: "+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });

@@ -89,6 +89,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/viewMoreTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="View More"
@@ -189,6 +190,7 @@
                         android:layout_marginLeft="16dp"/>
 
                     <TextView
+                        android:id="@+id/viewAllTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="View all"

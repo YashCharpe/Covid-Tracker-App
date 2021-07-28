@@ -1,10 +1,13 @@
 package com.example.covid19trackerapp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +29,30 @@ public class HealthFragment extends Fragment {
 
         parentHolder = inflater.inflate(R.layout.health_fragment,container,false);
 
+        TextView viewMoreTv = parentHolder.findViewById(R.id.viewMoreTv);
+        TextView viewAllTv = parentHolder.findViewById(R.id.viewAllTv);
+
+        viewMoreTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.who.int/health-topics/coronavirus#tab=tab_3"));
+                startActivity(intent);
+            }
+        });
+
+        viewAllTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"));
+                startActivity(intent);
+            }
+        });
 
         return parentHolder;
     }

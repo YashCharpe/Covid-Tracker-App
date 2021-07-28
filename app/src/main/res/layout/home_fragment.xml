@@ -102,7 +102,6 @@
                         </RelativeLayout>
 
 
-
                     </RelativeLayout>
 
 
@@ -557,5 +556,12 @@
 
         </RelativeLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="170dp"/>
 
 </RelativeLayout>

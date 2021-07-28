@@ -2,21 +2,13 @@ package com.example.covid19trackerapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -24,14 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.squareup.picasso.Picasso;
-
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +43,9 @@ public class SearchFragment extends Fragment {
 
         ListView listView = parentHolder.findViewById(R.id.listView);
         SearchView searchView =parentHolder.findViewById(R.id.searchView);
+        ProgressBar progBar = parentHolder.findViewById(R.id.progBar);
+
+        progBar.setVisibility(View.VISIBLE);
 
         List<CountryPost> countryPostList = new ArrayList<>();
 
@@ -73,6 +62,7 @@ public class SearchFragment extends Fragment {
             public void onResponse(Call<List<CountryPost>> call, Response<List<CountryPost>> response) {
                 if(!response.isSuccessful())
                 {
+                    progBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(getContext(),"Error!! Code: "+response.code(),Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -85,12 +75,13 @@ public class SearchFragment extends Fragment {
                         String url = countryPost.getCountryInfo().getFlag();
                         countryPostList.add(countryPost);
                     }
-
+                    progBar.setVisibility(View.INVISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<List<CountryPost>> call, Throwable t) {
+                progBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getContext(),"Failure!! Code: "+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
@@ -98,10 +89,11 @@ public class SearchFragment extends Fragment {
 
         listView.setAdapter(adapter);
 
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                return true;
             }
 
             @Override
@@ -109,9 +101,10 @@ public class SearchFragment extends Fragment {
 
                 adapter.getFilter().filter(newText);
 
-                return false;
+                return true;
             }
         });
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
