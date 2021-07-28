@@ -35,6 +35,7 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
     private ArrayList<String> stateList,districtList;
     private TextView tv,dateTv;
     private StateMainModel stateMainModel;
+    private DistrictMainModel districtMainModel;
     private Button checkSlotBtn,selectDateBtn;
 
     @Override
@@ -72,7 +73,6 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
             }
         }).build();
 
-
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://cdn-api.co-vin.in/api/").client(client.newBuilder().build()).addConverterFactory(GsonConverterFactory.create()).build();
 
         CovidAPI covidAPI = retrofit.create(CovidAPI.class);
@@ -91,6 +91,8 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
                 else
                 {
                     stateMainModel = response.body();
+
+                    //Toast.makeText(getApplicationContext(),"Response: "+stateMainModel.getStates(),Toast.LENGTH_SHORT).show();
 
                     for(int i=0;i<stateMainModel.getStates().size();i++)
                     {
@@ -139,26 +141,20 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
                         }
                         else
                         {
-                            DistrictMainModel districtMainModel = response.body();
+                            districtMainModel = response.body();
                             districtList.clear();
-
                             for(int i=0;i<districtMainModel.getDistricts().size();i++)
                             {
                                 districtList.add(districtMainModel.getDistricts().get(i).getDistrict_name());
                             }
-
                             districtAutoCompleteTextView.setAdapter(districtAdapter);
-
                         }
                     }
-
                     @Override
                     public void onFailure(Call<DistrictMainModel> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),"District Error!! Response: "+t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
-
-
             }
         });
 
@@ -175,8 +171,25 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),VaccineSlotsPage.class));
+                Bundle bundle = new Bundle();
 
+                String selectedDistrict = districtAutoCompleteTextView.getText().toString();
+                int selectedDistrictId = 0;
+                //bundle.putString("district_id",districtAutoCompleteTextView.getText().toString());
+                bundle.putString("date",dateTv.getText().toString());
+
+                for(int i=0;i<districtMainModel.getDistricts().size();i++)
+                {
+                    if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
+                    {
+                        selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
+                    }
+                }
+                bundle.putString("district_id", String.valueOf(selectedDistrictId));
+
+                Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
             }
         });

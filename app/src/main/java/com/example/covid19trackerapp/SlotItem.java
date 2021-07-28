@@ -74,4 +74,56 @@ public class SlotItem {
     public String getAvailabilityTv() {
         return availabilityTv;
     }
+
+    public void setHospitalIconIv(int hospitalIconIv) {
+        this.hospitalIconIv = hospitalIconIv;
+    }
+
+    public void setLocationIconIv(int locationIconIv) {
+        this.locationIconIv = locationIconIv;
+    }
+
+    public void setClockIconIv(int clockIconIv) {
+        this.clockIconIv = clockIconIv;
+    }
+
+    public void setVaccineIconIv(int vaccineIconIv) {
+        this.vaccineIconIv = vaccineIconIv;
+    }
+
+    public void setHospitalNameTv(String hospitalNameTv) {
+        this.hospitalNameTv = hospitalNameTv;
+    }
+
+    public void setLocationTv(String locationTv) {
+        this.locationTv = locationTv;
+    }
+
+    public void setTimingTv(String timingTv) {
+        this.timingTv = timingTv;
+    }
+
+    public void setVaccineTv(String vaccineTv) {
+        this.vaccineTv = vaccineTv;
+    }
+
+    public void setFeeTypeTv(String feeTypeTv) {
+        this.feeTypeTv = feeTypeTv;
+    }
+
+    public void setAgeLimit(String ageLimit) {
+        this.ageLimit = ageLimit;
+    }
+
+    public void setAgeLimitTv(String ageLimitTv) {
+        this.ageLimitTv = ageLimitTv;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+
+    public void setAvailabilityTv(String availabilityTv) {
+        this.availabilityTv = availabilityTv;
+    }
 }
