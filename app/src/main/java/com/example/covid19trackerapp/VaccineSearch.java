@@ -223,25 +223,69 @@ public class VaccineSearch extends AppCompatActivity implements DatePickerDialog
 
         String selectedDate = dayOfMonth+"-"+(month+1)+"-"+year;
 
-        Bundle bundle = new Bundle();
-
-        String selectedDistrict = districtAutoCompleteTextView.getText().toString();
-        int selectedDistrictId = 0;
-        //bundle.putString("district_id",districtAutoCompleteTextView.getText().toString());
-        bundle.putString("date",selectedDate);
-
-        for(int i=0;i<districtMainModel.getDistricts().size();i++)
+        if(!pincodeTv.getEditText().getText().toString().isEmpty()&&!stateAutoCompleteTextView.getText().toString().equals("Select State")&&!districtAutoCompleteTextView.getText().toString().equals("Select District"))
         {
-            if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
-            {
-                selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
-            }
-        }
-        bundle.putString("district_id", String.valueOf(selectedDistrictId));
+            Bundle bundle = new Bundle();
 
-        Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+            String selectedDistrict = districtAutoCompleteTextView.getText().toString();
+            int selectedDistrictId = 0;
+            bundle.putString("date",selectedDate);
+
+            for(int i=0;i<districtMainModel.getDistricts().size();i++)
+            {
+                if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
+                {
+                    selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
+                }
+            }
+            bundle.putString("district_id", String.valueOf(selectedDistrictId));
+            bundle.putString("pincode","0");
+
+            Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+        else if (pincodeTv.getEditText().getText().toString().isEmpty()&&!stateAutoCompleteTextView.getText().toString().equals("Select State")&&!districtAutoCompleteTextView.getText().toString().equals("Select District"))
+        {
+            Bundle bundle = new Bundle();
+
+            String selectedDistrict = districtAutoCompleteTextView.getText().toString();
+            int selectedDistrictId = 0;
+            bundle.putString("date",selectedDate);
+
+            for(int i=0;i<districtMainModel.getDistricts().size();i++)
+            {
+                if(districtMainModel.getDistricts().get(i).getDistrict_name().equals(selectedDistrict))
+                {
+                    selectedDistrictId = districtMainModel.getDistricts().get(i).getDistrict_id();
+                }
+            }
+            bundle.putString("district_id", String.valueOf(selectedDistrictId));
+            bundle.putString("pincode","0");
+
+            Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+        else
+        {
+            Bundle bundle = new Bundle();
+            String selectedDistrict = districtAutoCompleteTextView.getText().toString();
+            int selectedDistrictId = 0;
+            bundle.putString("date",selectedDate);
+            bundle.putString("district_id","0");
+            bundle.putString("pincode",pincodeTv.getEditText().getText().toString());
+
+            Intent intent = new Intent(getApplicationContext(),VaccineSlotsPage.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
+        }
+
+
+
 
 
     }

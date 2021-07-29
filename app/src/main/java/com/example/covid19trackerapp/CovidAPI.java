@@ -30,4 +30,7 @@ public interface CovidAPI {
     @GET("v2/appointment/sessions/public/findByDistrict")
     Call<VaccineSessionModel> getVaccineSlotsByDistricts(@Query("district_id") int district_id, @Query("date") String date);
 
+    @GET("v2/appointment/sessions/public/findByPin")
+    Call<VaccineSessionModel> getVaccineSlotsByPinCode(@Query("pincode") int pincode,@Query("date") String date);
+
 }
